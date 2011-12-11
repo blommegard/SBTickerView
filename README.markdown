@@ -2,7 +2,7 @@
 ## Features
 * Easy to use (see the demo app, just assign a front & back view and tick it)
 * Perspective ("3D")
-* Shadows
+* Shadows (masked by the alpha channel)
 * This project is written using ARC
 
 ## Future features
@@ -14,4 +14,4 @@
 SBTickerView is released under the MIT-license (see the LICENSE file)
 
 ## Screenshots
-![Screenshot](https://github.com/simonb/SBTickerView/raw/master/SBTickerViewDemo/Screenshots/timeticker.png "Time ticker")
+![Screenshot](https://github.com/blommegard/SBTickerView/raw/master/SBTickerViewDemo/Screenshots/timeticker.png "Time ticker")
