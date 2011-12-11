@@ -1,0 +1,333 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F44EB51E1494EEE800CC57C0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44EB51D1494EEE800CC57C0 /* UIKit.framework */; };
+		F44EB5201494EEE800CC57C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44EB51F1494EEE800CC57C0 /* Foundation.framework */; };
+		F44EB5221494EEE800CC57C0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44EB5211494EEE800CC57C0 /* CoreGraphics.framework */; };
+		F44EB5281494EEE800CC57C0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F44EB5261494EEE800CC57C0 /* InfoPlist.strings */; };
+		F44EB52A1494EEE800CC57C0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F44EB5291494EEE800CC57C0 /* main.m */; };
+		F44EB52E1494EEE800CC57C0 /* SBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F44EB52D1494EEE800CC57C0 /* SBAppDelegate.m */; };
+		F44EB54B1494EF1E00CC57C0 /* UIView+SBExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = F44EB53B1494EF1E00CC57C0 /* UIView+SBExtras.m */; };
+		F44EB54C1494EF1E00CC57C0 /* SBTickView.m in Sources */ = {isa = PBXBuildFile; fileRef = F44EB53D1494EF1E00CC57C0 /* SBTickView.m */; };
+		F44EB54D1494EF1E00CC57C0 /* SBTickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F44EB53F1494EF1E00CC57C0 /* SBTickerView.m */; };
+		F44EB54E1494EF1E00CC57C0 /* SBDoubleSidedLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F44EB5411494EF1E00CC57C0 /* SBDoubleSidedLayer.m */; };
+		F44EB54F1494EF1E00CC57C0 /* SBGradientOverlayLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F44EB5431494EF1E00CC57C0 /* SBGradientOverlayLayer.m */; };
+		F44EB5501494EF1E00CC57C0 /* SBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F44EB5451494EF1E00CC57C0 /* SBViewController.m */; };
+		F44EB5511494EF1E00CC57C0 /* back.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F44EB5461494EF1E00CC57C0 /* back.jpeg */; };
+		F44EB5521494EF1E00CC57C0 /* back@2x.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F44EB5471494EF1E00CC57C0 /* back@2x.jpeg */; };
+		F44EB5531494EF1E00CC57C0 /* front@2x.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F44EB5481494EF1E00CC57C0 /* front@2x.jpeg */; };
+		F44EB5541494EF1E00CC57C0 /* front.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F44EB5491494EF1E00CC57C0 /* front.jpeg */; };
+		F44EB5551494EF1E00CC57C0 /* SBViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F44EB54A1494EF1E00CC57C0 /* SBViewController.xib */; };
+		F44EB5571494EF3D00CC57C0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44EB5561494EF3D00CC57C0 /* QuartzCore.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F44EB5191494EEE800CC57C0 /* SBTickerViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SBTickerViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F44EB51D1494EEE800CC57C0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F44EB51F1494EEE800CC57C0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F44EB5211494EEE800CC57C0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F44EB5251494EEE800CC57C0 /* SBTickerViewDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SBTickerViewDemo-Info.plist"; sourceTree = "<group>"; };
+		F44EB5271494EEE800CC57C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F44EB5291494EEE800CC57C0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F44EB52B1494EEE800CC57C0 /* SBTickerViewDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SBTickerViewDemo-Prefix.pch"; sourceTree = "<group>"; };
+		F44EB52C1494EEE800CC57C0 /* SBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBAppDelegate.h; sourceTree = "<group>"; };
+		F44EB52D1494EEE800CC57C0 /* SBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBAppDelegate.m; sourceTree = "<group>"; };
+		F44EB53A1494EF1E00CC57C0 /* UIView+SBExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+SBExtras.h"; path = "../UIView+SBExtras.h"; sourceTree = "<group>"; };
+		F44EB53B1494EF1E00CC57C0 /* UIView+SBExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+SBExtras.m"; path = "../UIView+SBExtras.m"; sourceTree = "<group>"; };
+		F44EB53C1494EF1E00CC57C0 /* SBTickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBTickView.h; sourceTree = "<group>"; };
+		F44EB53D1494EF1E00CC57C0 /* SBTickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBTickView.m; sourceTree = "<group>"; };
+		F44EB53E1494EF1E00CC57C0 /* SBTickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBTickerView.h; path = ../SBTickerView.h; sourceTree = "<group>"; };
+		F44EB53F1494EF1E00CC57C0 /* SBTickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBTickerView.m; path = ../SBTickerView.m; sourceTree = "<group>"; };
+		F44EB5401494EF1E00CC57C0 /* SBDoubleSidedLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBDoubleSidedLayer.h; path = ../SBDoubleSidedLayer.h; sourceTree = "<group>"; };
+		F44EB5411494EF1E00CC57C0 /* SBDoubleSidedLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBDoubleSidedLayer.m; path = ../SBDoubleSidedLayer.m; sourceTree = "<group>"; };
+		F44EB5421494EF1E00CC57C0 /* SBGradientOverlayLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBGradientOverlayLayer.h; path = ../SBGradientOverlayLayer.h; sourceTree = "<group>"; };
+		F44EB5431494EF1E00CC57C0 /* SBGradientOverlayLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBGradientOverlayLayer.m; path = ../SBGradientOverlayLayer.m; sourceTree = "<group>"; };
+		F44EB5441494EF1E00CC57C0 /* SBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBViewController.h; sourceTree = "<group>"; };
+		F44EB5451494EF1E00CC57C0 /* SBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBViewController.m; sourceTree = "<group>"; };
+		F44EB5461494EF1E00CC57C0 /* back.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = back.jpeg; sourceTree = "<group>"; };
+		F44EB5471494EF1E00CC57C0 /* back@2x.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "back@2x.jpeg"; sourceTree = "<group>"; };
+		F44EB5481494EF1E00CC57C0 /* front@2x.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "front@2x.jpeg"; sourceTree = "<group>"; };
+		F44EB5491494EF1E00CC57C0 /* front.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = front.jpeg; sourceTree = "<group>"; };
+		F44EB54A1494EF1E00CC57C0 /* SBViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SBViewController.xib; sourceTree = "<group>"; };
+		F44EB5561494EF3D00CC57C0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F44EB5161494EEE800CC57C0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F44EB5571494EF3D00CC57C0 /* QuartzCore.framework in Frameworks */,
+				F44EB51E1494EEE800CC57C0 /* UIKit.framework in Frameworks */,
+				F44EB5201494EEE800CC57C0 /* Foundation.framework in Frameworks */,
+				F44EB5221494EEE800CC57C0 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F44EB50E1494EEE800CC57C0 = {
+			isa = PBXGroup;
+			children = (
+				F44EB5231494EEE800CC57C0 /* SBTickerViewDemo */,
+				F44EB51C1494EEE800CC57C0 /* Frameworks */,
+				F44EB51A1494EEE800CC57C0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F44EB51A1494EEE800CC57C0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F44EB5191494EEE800CC57C0 /* SBTickerViewDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F44EB51C1494EEE800CC57C0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F44EB5561494EF3D00CC57C0 /* QuartzCore.framework */,
+				F44EB51D1494EEE800CC57C0 /* UIKit.framework */,
+				F44EB51F1494EEE800CC57C0 /* Foundation.framework */,
+				F44EB5211494EEE800CC57C0 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F44EB5231494EEE800CC57C0 /* SBTickerViewDemo */ = {
+			isa = PBXGroup;
+			children = (
+				F4D594CD1494F31200F76309 /* SBTickerView */,
+				F44EB53C1494EF1E00CC57C0 /* SBTickView.h */,
+				F44EB53D1494EF1E00CC57C0 /* SBTickView.m */,
+				F44EB5441494EF1E00CC57C0 /* SBViewController.h */,
+				F44EB5451494EF1E00CC57C0 /* SBViewController.m */,
+				F44EB5461494EF1E00CC57C0 /* back.jpeg */,
+				F44EB5471494EF1E00CC57C0 /* back@2x.jpeg */,
+				F44EB5481494EF1E00CC57C0 /* front@2x.jpeg */,
+				F44EB5491494EF1E00CC57C0 /* front.jpeg */,
+				F44EB54A1494EF1E00CC57C0 /* SBViewController.xib */,
+				F44EB52C1494EEE800CC57C0 /* SBAppDelegate.h */,
+				F44EB52D1494EEE800CC57C0 /* SBAppDelegate.m */,
+				F44EB5241494EEE800CC57C0 /* Supporting Files */,
+			);
+			path = SBTickerViewDemo;
+			sourceTree = "<group>";
+		};
+		F44EB5241494EEE800CC57C0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F44EB5251494EEE800CC57C0 /* SBTickerViewDemo-Info.plist */,
+				F44EB5261494EEE800CC57C0 /* InfoPlist.strings */,
+				F44EB5291494EEE800CC57C0 /* main.m */,
+				F44EB52B1494EEE800CC57C0 /* SBTickerViewDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F4D594CD1494F31200F76309 /* SBTickerView */ = {
+			isa = PBXGroup;
+			children = (
+				F44EB53A1494EF1E00CC57C0 /* UIView+SBExtras.h */,
+				F44EB53B1494EF1E00CC57C0 /* UIView+SBExtras.m */,
+				F44EB53E1494EF1E00CC57C0 /* SBTickerView.h */,
+				F44EB53F1494EF1E00CC57C0 /* SBTickerView.m */,
+				F44EB5401494EF1E00CC57C0 /* SBDoubleSidedLayer.h */,
+				F44EB5411494EF1E00CC57C0 /* SBDoubleSidedLayer.m */,
+				F44EB5421494EF1E00CC57C0 /* SBGradientOverlayLayer.h */,
+				F44EB5431494EF1E00CC57C0 /* SBGradientOverlayLayer.m */,
+			);
+			name = SBTickerView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F44EB5181494EEE800CC57C0 /* SBTickerViewDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F44EB5371494EEE800CC57C0 /* Build configuration list for PBXNativeTarget "SBTickerViewDemo" */;
+			buildPhases = (
+				F44EB5151494EEE800CC57C0 /* Sources */,
+				F44EB5161494EEE800CC57C0 /* Frameworks */,
+				F44EB5171494EEE800CC57C0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SBTickerViewDemo;
+			productName = SBTickerViewDemo;
+			productReference = F44EB5191494EEE800CC57C0 /* SBTickerViewDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F44EB5101494EEE800CC57C0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = Doubleint;
+			};
+			buildConfigurationList = F44EB5131494EEE800CC57C0 /* Build configuration list for PBXProject "SBTickerViewDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F44EB50E1494EEE800CC57C0;
+			productRefGroup = F44EB51A1494EEE800CC57C0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F44EB5181494EEE800CC57C0 /* SBTickerViewDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F44EB5171494EEE800CC57C0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F44EB5281494EEE800CC57C0 /* InfoPlist.strings in Resources */,
+				F44EB5511494EF1E00CC57C0 /* back.jpeg in Resources */,
+				F44EB5521494EF1E00CC57C0 /* back@2x.jpeg in Resources */,
+				F44EB5531494EF1E00CC57C0 /* front@2x.jpeg in Resources */,
+				F44EB5541494EF1E00CC57C0 /* front.jpeg in Resources */,
+				F44EB5551494EF1E00CC57C0 /* SBViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F44EB5151494EEE800CC57C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F44EB52A1494EEE800CC57C0 /* main.m in Sources */,
+				F44EB52E1494EEE800CC57C0 /* SBAppDelegate.m in Sources */,
+				F44EB54B1494EF1E00CC57C0 /* UIView+SBExtras.m in Sources */,
+				F44EB54C1494EF1E00CC57C0 /* SBTickView.m in Sources */,
+				F44EB54D1494EF1E00CC57C0 /* SBTickerView.m in Sources */,
+				F44EB54E1494EF1E00CC57C0 /* SBDoubleSidedLayer.m in Sources */,
+				F44EB54F1494EF1E00CC57C0 /* SBGradientOverlayLayer.m in Sources */,
+				F44EB5501494EF1E00CC57C0 /* SBViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F44EB5261494EEE800CC57C0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F44EB5271494EEE800CC57C0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F44EB5351494EEE800CC57C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F44EB5361494EEE800CC57C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F44EB5381494EEE800CC57C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SBTickerViewDemo/SBTickerViewDemo-Prefix.pch";
+				INFOPLIST_FILE = "SBTickerViewDemo/SBTickerViewDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F44EB5391494EEE800CC57C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SBTickerViewDemo/SBTickerViewDemo-Prefix.pch";
+				INFOPLIST_FILE = "SBTickerViewDemo/SBTickerViewDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F44EB5131494EEE800CC57C0 /* Build configuration list for PBXProject "SBTickerViewDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F44EB5351494EEE800CC57C0 /* Debug */,
+				F44EB5361494EEE800CC57C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F44EB5371494EEE800CC57C0 /* Build configuration list for PBXNativeTarget "SBTickerViewDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F44EB5381494EEE800CC57C0 /* Debug */,
+				F44EB5391494EEE800CC57C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F44EB5101494EEE800CC57C0 /* Project object */;
+}
