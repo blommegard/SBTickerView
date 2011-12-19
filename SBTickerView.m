@@ -40,6 +40,7 @@
 @property (nonatomic, strong) CALayer *flipLayer;
 
 - (void)setup;
+- (void)finalizeTick:(void (^)(void))completion;
 @end
 
 @implementation SBTickerView {
@@ -99,6 +100,16 @@
     [self setBackgroundColor:[UIColor clearColor]];
 }
 
+- (void)finalizeTick:(void (^)(void))completion {
+    _flags.ticking = NO;
+    UIView *frontView = self.frontView;
+    [self setFrontView:self.backView];
+    [self setBackView:frontView];
+    
+    if (completion)
+        completion();
+}
+
 #pragma mark - Public
 
 - (void)tick:(SBTickerViewTickDirection)direction animated:(BOOL)animated completion:(void (^)(void))completion {
@@ -106,7 +117,10 @@
         return;
     _flags.ticking = YES;
     
-    void (^block)(void) = [completion copy];
+    if (!animated) {
+        [self finalizeTick:completion];
+        return;
+    }
     
     [self setFlipLayer:[CALayer layer]];
     [_flipLayer setFrame:self.layer.bounds];
@@ -177,21 +191,15 @@
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, .01 * NSEC_PER_SEC); // WTF!
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [CATransaction begin];
-        [CATransaction setAnimationDuration:(animated? _duration:0)];
+        [CATransaction setAnimationDuration:_duration];
         
         [CATransaction setCompletionBlock:^{
             [_flipLayer removeFromSuperlayer], _flipLayer = nil;
             [_topFaceLayer removeFromSuperlayer], _topFaceLayer = nil;
             [_bottomFaceLayer removeFromSuperlayer], _bottomFaceLayer = nil;
             [_tickLayer removeFromSuperlayer], _tickLayer = nil;
-            
-            _flags.ticking = NO;
-            UIView *frontView = self.frontView;
-            [self setFrontView:self.backView];
-            [self setBackView:frontView];
-            
-            if (block)
-                block();
+
+            [self finalizeTick:completion];
         }];
         
         CGFloat angle = (M_PI) * (1-direction);
