@@ -38,6 +38,8 @@
     [fullTickerView setFrontView:frontView];
     [fullTickerView setBackView:backView];
     [fullTickerView setDuration:1.];
+    [fullTickerView setPanning:YES];
+    [fullTickerView setAllowedPanDirections:(SBTickerViewAllowedPanDirectionDown | SBTickerViewAllowedPanDirectionUp)];
     
     [imageTickerView setFrontView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"front.jpeg"]]];
     [imageTickerView setBackView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"back.jpeg"]]];

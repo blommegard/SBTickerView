@@ -39,14 +39,24 @@
 @property (nonatomic, strong) SBDoubleSidedLayer *tickLayer;
 @property (nonatomic, strong) CALayer *flipLayer;
 
-- (void)setup;
-- (void)finalizeTick:(void (^)(void))completion;
+@property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
+
+- (void)_setup;
+- (void)_initializeTick:(SBTickerViewTickDirection)direction;
+- (void)_finalizeTick:(void (^)(void))completion;
+- (void)_pan:(UIPanGestureRecognizer *)gestureRecognizer;
 @end
 
 @implementation SBTickerView {
     struct {
         unsigned int ticking:1;
+        unsigned int panning:1;
     } _flags;
+    
+    SBTickerViewTickDirection _panningDirection;
+    
+    CGPoint _initialPanPosition;
+    CGPoint _lastPanPosition;
 }
 
 @synthesize topFaceLayer = _topFaceLayer;
@@ -58,21 +68,25 @@
 @synthesize backView = _backView;
 @synthesize duration = _duration;
 
+@synthesize panning = _panning;
+@synthesize allowedPanDirections = _allowedPanDirections;
+@synthesize panGestureRecognizer = _panGestureRecognizer;
+
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) 
-        [self setup];
+        [self _setup];
     return self;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super initWithCoder:aDecoder])) 
-        [self setup];
+        [self _setup];
     return self;
 }
 
 - (id)init {
     if ((self = [super init]))
-        [self setup];
+        [self _setup];
     return self;
 }
 
@@ -93,35 +107,33 @@
     [self addSubview:frontView];
 }
 
+- (void)setPanning:(BOOL)panning {
+    if (_panning != panning) {
+        _panning = panning;
+        
+        if (_panning)
+            [self addGestureRecognizer:self.panGestureRecognizer];
+        else
+            [self removeGestureRecognizer:self.panGestureRecognizer];
+    }
+}
+
+- (UIPanGestureRecognizer *)panGestureRecognizer {
+    if (!_panGestureRecognizer) {
+        _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(_pan:)];
+    }
+    
+    return _panGestureRecognizer;
+}
+
 #pragma mark - Private
 
-- (void)setup {
+- (void)_setup {
     _duration = .5;
     [self setBackgroundColor:[UIColor clearColor]];
 }
 
-- (void)finalizeTick:(void (^)(void))completion {
-    _flags.ticking = NO;
-    UIView *frontView = self.frontView;
-    [self setFrontView:self.backView];
-    [self setBackView:frontView];
-    
-    if (completion)
-        completion();
-}
-
-#pragma mark - Public
-
-- (void)tick:(SBTickerViewTickDirection)direction animated:(BOOL)animated completion:(void (^)(void))completion {
-    if (_flags.ticking || !_frontView || !_backView)
-        return;
-    _flags.ticking = YES;
-    
-    if (!animated) {
-        [self finalizeTick:completion];
-        return;
-    }
-    
+- (void)_initializeTick:(SBTickerViewTickDirection)direction {
     [self setFlipLayer:[CALayer layer]];
     [_flipLayer setFrame:self.layer.bounds];
     
@@ -147,7 +159,7 @@
                                                                    segment:SBGradientOverlayLayerSegmentBottom]];
     
     [_bottomFaceLayer setFrame:CGRectMake(0., floorf(_flipLayer.frame.size.height / 2), _flipLayer.frame.size.width, floorf(_flipLayer.frame.size.height/2))];
-
+    
     // Tick layer
     [self setTickLayer:[[SBDoubleSidedLayer alloc] init]];
     
@@ -157,9 +169,9 @@
     
     [_tickLayer setFrontLayer:[[SBGradientOverlayLayer alloc] initWithStyle:SBGradientOverlayLayerTypeTick
                                                                     segment:SBGradientOverlayLayerSegmentTop]];
-
+    
     [_tickLayer setBackLayer:[[SBGradientOverlayLayer alloc] initWithStyle:SBGradientOverlayLayerTypeTick
-                                                                    segment:SBGradientOverlayLayerSegmentBottom]];
+                                                                   segment:SBGradientOverlayLayerSegmentBottom]];
     
     
     // Images
@@ -171,8 +183,9 @@
         
         [_topFaceLayer setGradientOpacity:1.];
         
-        [_tickLayer setTransform:CATransform3DIdentity];
-    } else {
+        [_tickLayer setTransform:CATransform3DIdentity];    
+    }
+    else if (direction == SBTickerViewTickDirectionUp) {
         [_topFaceLayer setContents:(__bridge id)frontImage.CGImage];
         [_bottomFaceLayer setContents:(__bridge id)backImage.CGImage];
         [_tickLayer.frontLayer setContents:(__bridge id)backImage.CGImage];
@@ -182,11 +195,86 @@
         
         [_tickLayer setTransform:CATransform3DMakeRotation(-M_PI, 1., 0., 0.)];
     }
-
+    
     // Add layers
     [_flipLayer addSublayer:_topFaceLayer];
     [_flipLayer addSublayer:_bottomFaceLayer];
     [_flipLayer addSublayer:_tickLayer];
+}
+
+- (void)_finalizeTick:(void (^)(void))completion {
+    UIView *frontView = self.frontView;
+    [self setFrontView:self.backView];
+    [self setBackView:frontView];
+    
+    if (completion)
+        completion();
+    
+    _flags.ticking = NO;
+}
+
+- (void)_pan:(UIPanGestureRecognizer *)gestureRecognizer {
+    if (self.allowedPanDirections == SBTickerViewAllowedPanDirectionNone)
+        return;
+    
+    if (gestureRecognizer.state == UIGestureRecognizerStateBegan)
+        _initialPanPosition = [gestureRecognizer locationInView:self];
+    
+    _lastPanPosition = [gestureRecognizer locationInView:self];
+    
+    // Start
+    if (gestureRecognizer.state == UIGestureRecognizerStateChanged && !_flags.panning) {
+        // Down
+        if (self.allowedPanDirections & SBTickerViewAllowedPanDirectionDown && _initialPanPosition.y < _lastPanPosition.y) {
+            NSLog(@"Start down");
+            _panningDirection = SBTickerViewTickDirectionDown;
+            _flags.panning = YES;
+        }
+        // Up
+        if (self.allowedPanDirections & SBTickerViewAllowedPanDirectionUp && _initialPanPosition.y > _lastPanPosition.y) {
+            NSLog(@"Start up");
+            _panningDirection = SBTickerViewTickDirectionUp;
+            _flags.panning = YES;
+        }
+        
+        return;
+    }
+    
+    // Pan
+    if (gestureRecognizer.state == UIGestureRecognizerStateChanged && _flags.panning) {
+        // Nop
+        if (!(_panningDirection == SBTickerViewTickDirectionDown && _initialPanPosition.y >= _lastPanPosition.y) &&
+            !(_panningDirection == SBTickerViewTickDirectionUp && _initialPanPosition.y <= _lastPanPosition.y)) {
+
+            NSLog(@"Pan!");
+        }
+    }
+    
+    // End
+    if ((gestureRecognizer.state == UIGestureRecognizerStateCancelled || gestureRecognizer.state == UIGestureRecognizerStateEnded)
+        && _flags.panning) {
+        NSLog(@"End");
+        _flags.panning = NO;
+    }
+}
+
+- (CGPoint)_invalidPanPosition {
+    return CGPointMake(CGFLOAT_MAX, CGFLOAT_MAX);
+}
+
+#pragma mark - Public
+
+- (void)tick:(SBTickerViewTickDirection)direction animated:(BOOL)animated completion:(void (^)(void))completion {
+    if (_flags.ticking || !_frontView || !_backView)
+        return;
+    _flags.ticking = YES;
+    
+    if (!animated) {
+        [self _finalizeTick:completion];
+        return;
+    }
+    
+    [self _initializeTick:direction];
     
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, .01 * NSEC_PER_SEC); // WTF!
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -199,7 +287,7 @@
             [_bottomFaceLayer removeFromSuperlayer], _bottomFaceLayer = nil;
             [_tickLayer removeFromSuperlayer], _tickLayer = nil;
 
-            [self finalizeTick:completion];
+            [self _finalizeTick:completion];
         }];
         
         CGFloat angle = (M_PI) * (1-direction);
