@@ -203,10 +203,11 @@
 }
 
 - (void)_finalizeTick:(void (^)(void))completion {
-    UIView *frontView = self.frontView;
+    UIView *frontView = [self.frontView retain];
     [self setFrontView:self.backView];
     [self setBackView:frontView];
-    
+    [frontView release];
+
     if (completion)
         completion();
     
