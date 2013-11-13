@@ -52,7 +52,7 @@
 - (id)initWithStyle:(SBGradientOverlayLayerType)type segment:(SBGradientOverlayLayerSegment)segment {
 	if ((self = [super init])) {
         _type = type;
-        _segment = _segment;
+        _segment = segment;
 		
         [self setMasksToBounds:YES];
 		[self addSublayer:self.gradientLayer];
